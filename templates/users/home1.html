@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vehicle Management System</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="jumbotron">
+        <h1 class="display-4">Welcome to Vehicle Management System</h1>
+        <p class="lead">Here, you can see all the vehicles details.</p>
+        <hr class="my-4">
+        {% if user.is_authenticated %}
+        <h3>Hello {{user.username}} Welcome...<h3>
+<!--        <li><a href="{% url 'user:logout' %}">Logout</a></li>-->
+            <span style="float:right"><a href="{% url 'user:logout' %}" style="color:black">Logout</a></span>
+        {% else %}
+        <li><a href="{% url 'user:register-user' %}">Register</a></li>
+        <li><a href="{% url 'user:login-user' %}">Login</a></li>
+        {% endif %}
+<!--        <p>With our system, you can add, view, edit, and delete your vehicles.</p>-->
+<!--        <a class="btn btn-primary btn-lg" href="#" role="button">Get started</a>-->
+    </div>
+    <div class="container">
+        {% for i in vehicle %}
+        <h4>{{i.vehicle_number}}</h4>
+        <h4>{{i.vehicle_type}}</h4>
+        <h4>{{i.vehicle_model}}</h4>
+        <h4>{{i.vehicle_description}}</h4>
+        <div>
+            ***************************
+        </div>
+        {% endfor %}
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.1/dist/umd/popper.min.js"
+            integrity="sha384-QafTMpVrDmMHnMXJQnJP1/TM6jZoNY54JkHnDqlw0Kjxnwl75FnhDh0ykLQ2Qiv9"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+            integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+            crossorigin="anonymous"></script>
+</body>
+</html>
